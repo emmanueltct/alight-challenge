@@ -90,12 +90,15 @@ const Login = () => {
                     </a>
                   </div>
                 )}
-                <Link to="/hr">
-                  <button className="Login_button">Login</button>
+               <Link to="/hr">
+                  <button className="Login_button">
+                    {!isSignup ? "Login" : "Signup"}
+                  </button>
                 </Link>
                 <div className="second_button">
                   <button className="Google_login">
-                    Sign Up with Google <img src="../../../../google.png" />
+                    {!isSignup ? "Login Up with Google" : "Sign Up with Google"}
+                    <img src="../../../../google.png" />
                   </button>
                 </div>
               </div>
