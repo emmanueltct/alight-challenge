@@ -1,24 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import "./App.css";
+import "./index.css";
+import Dashboard from "./components/hr/dashboard";
+import UserDashboard from "./components/users/userDashborad";
+import Login from "./components/account/userLogin";
+import Layout from "./layout";
 
 function App() {
+  const LoginRoute = () => {
+    return (
+      <div className="App">
+        <div className="login-background">
+          <Login />
+        </div>
+      </div>
+    );
+  };
+  const HrDashboard = () => {
+    return (
+      <div className="App">
+        <Dashboard />
+      </div>
+    );
+  };
+  const CandidateDashboard = () => {
+    return (
+      <div className="App">
+        <UserDashboard />
+      </div>
+    );
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<LoginRoute />} />
+          <Route
+            path="hr"
+            element={
+              <div className="App">
+                <HrDashboard />
+              </div>
+            }
+          />
+          <Route path="candidate" element={<CandidateDashboard />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
